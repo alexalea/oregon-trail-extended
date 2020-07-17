@@ -16,6 +16,53 @@ class Traveler {
     }
 }
 
+//Doctor Class
+
+class Doctor extends Traveler{
+    constructor (name) {
+        super(name)
+        this.name = name
+        this.food = 1
+        this.isHealthy = true
+    }
+    heal(traveler) {
+        return traveler.isHealthy = true
+    }
+}
+
+
+//Hunter Class
+
+class Hunter extends Traveler{
+    constructor (name, food = 2, isHealthy) {
+        super(name, food, isHealthy)
+        this.food = food
+    }
+    eat() {
+        if(this.food < 2) {
+            this.food = 0
+            this.isHealthy = false
+        } else {
+            this.food -= 2
+        }
+        return this.food
+    }
+    hunt() {
+        return this.food += 5
+    }
+    giveFood(traveler, numOfFoodUnits) {
+        if(this.food - numOfFoodUnits > 0) {
+            this.food -= numOfFoodUnits
+            traveler.food += numOfFoodUnits
+        } else {
+            traveler.food += 0
+        }
+    }
+}
+
+
+//Wagon Class
+
 class Wagon {
     constructor (capacity) {
         this.capacity = capacity
